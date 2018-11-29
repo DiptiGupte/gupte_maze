@@ -1,44 +1,45 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
+//using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class pickup : MonoBehaviour {
 
     public float speed;
-    private Rigidbody rb;
-    private int bugCount;
-    private int compCount;
-    private int buttonCount;
+    public Text countText;
+
+    public int count;
 
 	// Use this for initialization
 	void Start ()
     {
-        rb = GetComponent<Rigidbody>();
-        bugCount = 0; 
-	}
-	
-	// Update is called once per frame
-	void FixedUpdate ()
-    {
-        
-	}
+        count = 0;
+        SetCountText(0);
+    }
 
-    private void OnTriggerEnter(Collider other)
+
+    void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("pickup"))
         {
             other.gameObject.SetActive(false);
-            bugCount = bugCount + 5;
+            SetCountText(5);
         }
-        else if (other.gameObject.CompareTag("comp"))
+        if (other.gameObject.CompareTag("comp"))
         {
             other.gameObject.SetActive(false);
-            compCount = compCount + 10;
+            SetCountText(10);
         }
-        else if (other.gameObject.CompareTag("button"))
+        if (other.gameObject.CompareTag("button"))
         {
             other.gameObject.SetActive(false);
-            buttonCount = buttonCount + 1;
+            SetCountText(50);
         }
+    }
+
+    void SetCountText(int point)
+    {
+        count = count + point;
+        countText.text = "Pixel Points: " + count.ToString();
     }
 }

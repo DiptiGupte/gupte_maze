@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
+    path: Assets/Scenes/title screen.unity
+    guid: d7f9acde7e5f01c40ae8c8ce46487787
+  - enabled: 1
+    path: Assets/Scenes/MazeDipti.unity
     guid: 99c9720ab356a0642a771bea13969a05
   m_configObjects: {}
